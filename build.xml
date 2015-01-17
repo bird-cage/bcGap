@@ -63,4 +63,22 @@
         <property name="build.options.native.product" value="product:touch"/>
     </target>
     -->
+
+    <target name="-after-build"/>
+        <target name="build"
+                depends="init,-before-build,-build,-after-build"
+                description="Copy over the font/dinmu folder and remove temp files"/>
+
+        <copy todir="${basedir}/resources/css/stylesheets/fonts/dinmu" overwrite="true">
+            <fileset dir="${basedir}/resources/sass/stylesheets/fonts/dinmu">
+                <include name="**/*" />
+            </fileset>
+        </copy>
+        <copy todir="${build.dir}/resources/css/stylesheets/fonts/dinmu" overwrite="true">
+            <fileset dir="${basedir}/resources/sass/stylesheets/fonts/dinmu">
+                <include name="**/*" />
+            </fileset>
+        </copy>
+        <delete dir="${basedir}/${build.dir}"/>
+
 </project>

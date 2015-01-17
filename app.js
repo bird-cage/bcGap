@@ -14,7 +14,12 @@ Ext.application({
     name: 'Dinmu',
 
     requires: [
-        'Ext.MessageBox'
+        'Ext.MessageBox',
+        'Dinmu.utils.Functions'
+    ],
+
+    controllers: [
+        'Main'
     ],
 
     views: [
